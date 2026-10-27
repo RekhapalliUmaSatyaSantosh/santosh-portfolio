@@ -164,3 +164,8 @@ EMAIL_TIMEOUT = 20
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_EMAIL = "santoshrekahapalli@gmail.com"
 
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
+RESEND_FROM_EMAIL = os.environ.get(
+    "RESEND_FROM_EMAIL",
+    "onboarding@resend.dev"
+)
