@@ -1,0 +1,542 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Santosh Rekhapalli | Python Full Stack Developer</title>
+    <meta name="description" content="Santosh Rekhapalli, Python Full Stack Developer specializing in Python, Django, REST APIs and PostgreSQL. Explore projects, internships and contact details.">
+    <meta name="author" content="Santosh Rekhapalli">
+    <meta name="theme-color" content="#0a1f38">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Santosh Rekhapalli">
+    <meta property="og:title" content="Santosh Rekhapalli | Python Full Stack Developer">
+    <meta property="og:description" content="Python, Django, REST APIs and modern frontend. Projects, internships and contact details.">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'portfolio/images/profilepicture.png' %}">
+    <meta name="twitter:card" content="summary">
+
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap">
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'portfolio/images/favicon.png' %}">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Santosh Rekhapalli",
+        "jobTitle": "Python Full Stack Developer",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}",
+        "email": "mailto:santoshrekahapalli@gmail.com",
+        "alumniOf": "Eluru College of Engineering and Technology",
+        "sameAs": [
+            "https://github.com/RekhapalliUmaSatyaSantosh",
+            "https://www.linkedin.com/in/uma-satya-santosh-rekhapalli/"
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="container nav">
+            <a href="#home" class="logo" aria-label="Santosh Rekhapalli, back to top">santosh<span>.dev</span></a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+                <span class="visually-hidden">Menu</span>
+                <span class="nav-toggle__bars" aria-hidden="true"></span>
+            </button>
+
+            <nav aria-label="Primary">
+                <ul class="nav-menu" id="nav-menu" role="list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+
+        <!-- Hero -->
+        <section class="hero container" id="home" aria-labelledby="hero-title">
+            <div class="hero__content">
+                <p class="hero-badge">
+                    <span class="status-dot" aria-hidden="true"></span>Python Full Stack Developer
+                </p>
+                <p class="eyebrow">Hello, I'm</p>
+                <h1 class="hero__title" id="hero-title">
+                    <span>Santosh</span>
+                    <span class="accent">Rekhapalli.</span>
+                </h1>
+                <p class="hero__tagline">Building web experiences that matter.</p>
+                <p class="hero__description">A Computer Science graduate passionate about building reliable web
+                    applications with Python, Django, REST APIs, and modern frontend technologies.</p>
+                <div class="hero__actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore My Work</span><span class="btn__icon" aria-hidden="true">↗</span>
+                    </a>
+                    <a href="{% static 'portfolio/file/resume.pdf' %}" class="btn btn-outline"
+                        download="Santosh_Rekhapalli_Resume.pdf">
+                        <span>Download Resume</span><span class="btn__icon" aria-hidden="true">↓</span>
+                    </a>
+                </div>
+                <ul class="tag-list" role="list" aria-label="Core technologies">
+                    <li>Python</li>
+                    <li>Django</li>
+                    <li>PostgreSQL</li>
+                    <li>REST APIs</li>
+                </ul>
+            </div>
+
+            <div class="hero-visual">
+                <div class="portrait">
+                    <div class="portrait__frame">
+                        <img class="portrait__image" src="{% static 'portfolio/images/profilepicture.png' %}"
+                            alt="Portrait of Santosh Rekhapalli" width="720" height="880"
+                            fetchpriority="high" decoding="async">
+                    </div>
+                </div>
+                <div class="floating-card floating-card--top" aria-hidden="true">
+                    <span class="floating-card__icon">⌘</span>
+                    <div>
+                        <strong>Backend</strong>
+                        <small>Python &amp; Django</small>
+                    </div>
+                </div>
+                <div class="floating-card floating-card--bottom" aria-hidden="true">
+                    <span class="floating-card__icon">✦</span>
+                    <div>
+                        <strong>Always Learning</strong>
+                        <small>Building real projects</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section container" id="about" aria-labelledby="about-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">Get to know me</p>
+                <h2 id="about-title">About Me<span>.</span></h2>
+                <p class="section-heading__lead">Developer focused on building useful, reliable web applications.</p>
+            </header>
+
+            <div class="card about-card" data-reveal>
+                <p>Computer Science and Engineering graduate with strong fundamentals in Python, Django, SQL, HTML5,
+                    CSS3, JavaScript. Seeking to obtain an entry-level Python Developer or Python Full-Stack Developer
+                    position where I can apply my knowledge to develop efficient and scalable applications, solve
+                    real-world problems, and grow professionally while contributing to organizational success.</p>
+                <dl class="about-details">
+                    <div>
+                        <dt>Education</dt>
+                        <dd>B.Tech in Computer Science and Engineering</dd>
+                    </div>
+                    <div>
+                        <dt>College</dt>
+                        <dd>Eluru College of Engineering and Technology</dd>
+                    </div>
+                    <div>
+                        <dt>Focus</dt>
+                        <dd>Python, Django, REST APIs and databases</dd>
+                    </div>
+                    <div>
+                        <dt>Location</dt>
+                        <dd>India</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section container" id="skills" aria-labelledby="skills-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">What I work with</p>
+                <h2 id="skills-title">Technical Skills<span>.</span></h2>
+                <p class="section-heading__lead">Technologies I use to build applications.</p>
+            </header>
+
+            <div class="skills-grid">
+                <article class="card card--interactive skill-card" data-reveal>
+                    <h3 class="card-title">Backend Development</h3>
+                    <ul class="check-list" role="list">
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Django REST Framework</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </article>
+                <article class="card card--interactive skill-card" data-reveal>
+                    <h3 class="card-title">Frontend Development</h3>
+                    <ul class="check-list" role="list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Bootstrap 5</li>
+                    </ul>
+                </article>
+                <article class="card card--interactive skill-card" data-reveal>
+                    <h3 class="card-title">Databases</h3>
+                    <ul class="check-list" role="list">
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>Oracle SQL</li>
+                        <li>SQL Queries</li>
+                    </ul>
+                </article>
+                <article class="card card--interactive skill-card" data-reveal>
+                    <h3 class="card-title">Tools &amp; Platforms</h3>
+                    <ul class="check-list" role="list">
+                        <li>Git &amp; GitHub</li>
+                        <li>VS Code</li>
+                        <li>Docker</li>
+                        <li>Postman</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section container" id="projects" aria-labelledby="projects-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">Selected work</p>
+                <h2 id="projects-title">Featured Projects<span>.</span></h2>
+                <p class="section-heading__lead">Practical applications built while developing my skills.</p>
+            </header>
+
+            <div class="projects-grid">
+                <article class="card card--interactive project-card" data-reveal>
+                    <div class="project-visual project-visual--finance" aria-hidden="true">
+                        <span class="project-visual__glyph">₹</span>
+                        <span class="project-visual__caption">Finance dashboard</span>
+                    </div>
+                    <div class="project-card__body">
+                        <p class="kicker">Full stack web app</p>
+                        <h3>Finora Expense Tracker</h3>
+                        <p>A Django expense management application for tracking expenses, income, categories, monthly
+                            budgets, and financial reports.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>PostgreSQL</li>
+                            <li>Chart.js</li>
+                        </ul>
+                        <a class="link-arrow" href="https://github.com/RekhapalliUmaSatyaSantosh/finora-expense-tracker"
+                            target="_blank" rel="noopener noreferrer">
+                            <span>View on GitHub<span class="visually-hidden"> (Finora Expense Tracker, opens in a new tab)</span></span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card card--interactive project-card" data-reveal>
+                    <div class="project-visual project-visual--library" aria-hidden="true">
+                        <span class="project-visual__glyph">▤</span>
+                        <span class="project-visual__caption">Library management</span>
+                    </div>
+                    <div class="project-card__body">
+                        <p class="kicker">Database web app</p>
+                        <h3>Library Management System</h3>
+                        <p>A Django application supporting user registration, login, book search, book issue and
+                            return workflows, and role-based access.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>PostgreSQL</li>
+                            <li>CRUD</li>
+                        </ul>
+                        <a class="link-arrow" href="https://github.com/RekhapalliUmaSatyaSantosh/library-management-system"
+                            target="_blank" rel="noopener noreferrer">
+                            <span>View on GitHub<span class="visually-hidden"> (Library Management System, opens in a new tab)</span></span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card card--interactive project-card" data-reveal>
+                    <div class="project-visual project-visual--weather" aria-hidden="true">
+                        <span class="project-visual__glyph">☁</span>
+                        <span class="project-visual__caption">Live weather</span>
+                    </div>
+                    <div class="project-card__body">
+                        <p class="kicker">API integration</p>
+                        <h3>WeatherVerse</h3>
+                        <p>A Django weather application that uses a weather API to retrieve and display weather
+                            information for searched locations.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>API</li>
+                            <li>HTML/CSS</li>
+                        </ul>
+                        <a class="link-arrow" href="https://github.com/RekhapalliUmaSatyaSantosh/WeatherVerse"
+                            target="_blank" rel="noopener noreferrer">
+                            <span>View on GitHub<span class="visually-hidden"> (WeatherVerse, opens in a new tab)</span></span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card card--interactive project-card" data-reveal>
+                    <div class="project-visual project-visual--security" aria-hidden="true">
+                        <span class="project-visual__glyph">⌘</span>
+                        <span class="project-visual__caption">Network security</span>
+                    </div>
+                    <div class="project-card__body">
+                        <p class="kicker">Machine learning project</p>
+                        <h3>Persistent Attack Detection</h3>
+                        <p>A Django application exploring detection of Advanced Persistent Threats in enterprise
+                            network data using machine learning classification models and the DARPA intrusion
+                            detection dataset.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>Scikit-learn</li>
+                            <li>Machine Learning</li>
+                        </ul>
+                        <a class="link-arrow"
+                            href="https://github.com/RekhapalliUmaSatyaSantosh/Intellegent-architecture-for-detecting-APTs"
+                            target="_blank" rel="noopener noreferrer">
+                            <span>View on GitHub<span class="visually-hidden"> (Persistent Attack Detection, opens in a new tab)</span></span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section container" id="experience" aria-labelledby="experience-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">My journey</p>
+                <h2 id="experience-title">Internships<span>.</span></h2>
+                <p class="section-heading__lead">My learning and professional development.</p>
+            </header>
+
+            <ol class="timeline" role="list">
+                <li class="timeline__item" data-reveal>
+                    <article class="card timeline-card">
+                        <p class="kicker"><time datetime="2026-04">Apr 2026</time> – <time datetime="2026-10">Oct 2026</time></p>
+                        <h3>Python Full-Stack Trainee</h3>
+                        <p class="timeline-card__org">QSpiders</p>
+                        <p>Completed software development training focused on Python programming, database
+                            management, and full-stack web development. Strengthened technical skills through coding
+                            practice and technical exercises.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Django</li>
+                        </ul>
+                    </article>
+                </li>
+                <li class="timeline__item" data-reveal>
+                    <article class="card timeline-card">
+                        <p class="kicker"><time datetime="2025-10">Oct 2025</time> – <time datetime="2025-12">Dec 2025</time></p>
+                        <h3>Data Analysis Intern</h3>
+                        <p class="timeline-card__org">Cognifyz Technologies</p>
+                        <p>Worked on data analysis tasks involving cuisine trends, ratings, votes, and price ranges
+                            using Python data analysis tools.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>Matplotlib</li>
+                            <li>Data Analysis</li>
+                        </ul>
+                    </article>
+                </li>
+                <li class="timeline__item" data-reveal>
+                    <article class="card timeline-card">
+                        <p class="kicker"><time datetime="2025-07">Jul 2025</time> – <time datetime="2025-09">Sep 2025</time></p>
+                        <h3>Python Full-Stack Developer Intern</h3>
+                        <p class="timeline-card__org">Edu Skills Academy</p>
+                        <p>Developed a Django web application with authentication and CRUD operations. Worked with
+                            SQL queries and RESTful APIs connecting backend functionality to frontend interfaces.</p>
+                        <ul class="tag-list" role="list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>MySQL</li>
+                            <li>REST APIs</li>
+                        </ul>
+                    </article>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Education -->
+        <section class="section container" id="education" aria-labelledby="education-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">Academic background</p>
+                <h2 id="education-title">Education<span>.</span></h2>
+                <p class="section-heading__lead">The foundation of my technical journey.</p>
+            </header>
+
+            <div class="education-grid">
+                <article class="card card--interactive education-card" data-reveal>
+                    <p class="kicker"><time datetime="2022">2022</time> – <time datetime="2026">2026</time></p>
+                    <h3 class="card-title">B.Tech — Computer Science and Engineering</h3>
+                    <p>Eluru College of Engineering and Technology</p>
+                    <p class="badge">CGPA: 7.65</p>
+                </article>
+                <article class="card card--interactive education-card" data-reveal>
+                    <p class="kicker"><time datetime="2020">2020</time> – <time datetime="2022">2022</time></p>
+                    <h3 class="card-title">Intermediate — MPC</h3>
+                    <p>Aditya Junior College</p>
+                    <p class="badge">Percentage: 68%</p>
+                </article>
+                <article class="card card--interactive education-card" data-reveal>
+                    <p class="kicker"><time datetime="2020">2020</time></p>
+                    <h3 class="card-title">SSC — Class 10</h3>
+                    <p>Aditya Public School</p>
+                    <p class="badge">Percentage: 97%</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section container" id="certifications" aria-labelledby="certifications-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">Continuous learning</p>
+                <h2 id="certifications-title">Certifications<span>.</span></h2>
+            </header>
+
+            <ul class="certs-grid" role="list">
+                <li class="card card--interactive cert-card" data-reveal>
+                    <h3 class="card-title">Python Programming</h3>
+                    <p>IBM</p>
+                </li>
+                <li class="card card--interactive cert-card" data-reveal>
+                    <h3 class="card-title">Python Essentials</h3>
+                    <p>Cisco</p>
+                </li>
+                <li class="card card--interactive cert-card" data-reveal>
+                    <h3 class="card-title">Oracle Cloud Infrastructure 2025</h3>
+                    <p>Oracle</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section class="section container" id="contact" aria-labelledby="contact-title">
+            <header class="section-heading" data-reveal>
+                <p class="section-label">Get in touch</p>
+                <h2 id="contact-title">Let's work together<span>.</span></h2>
+                <p class="section-heading__lead">Have an opportunity or project in mind? I'd love to hear from you.</p>
+            </header>
+
+            <div class="contact-layout">
+                <div class="card contact-card" data-reveal>
+                    <h3 class="card-title card-title--lg">Communication</h3>
+                    <p>Feel free to contact me through any of these channels.</p>
+                    <ul class="contact-list" role="list">
+                        <li>
+                            <a href="tel:+919121528661" class="card contact-link">
+                                <span class="contact-link__icon" aria-hidden="true">☎</span>
+                                <span class="contact-link__text">
+                                    <small>Call me</small>
+                                    <strong>+91 91215 28661</strong>
+                                </span>
+                                <span class="contact-link__arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:santoshrekahapalli@gmail.com" class="card contact-link">
+                                <span class="contact-link__icon" aria-hidden="true">✉</span>
+                                <span class="contact-link__text">
+                                    <small>Email me</small>
+                                    <strong>santoshrekahapalli@gmail.com</strong>
+                                </span>
+                                <span class="contact-link__arrow" aria-hidden="true">↗</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/919121528661" class="btn btn-primary btn-block" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg class="btn__glyph" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                            <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.200Zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8-.2-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.200-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.300 3 3 0 0 0-.9 2.200 5.200 5.200 0 0 0 1.100 2.800 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300c.2-.5.200-.9.200-1.300-.1-.1-.3-.2-.5-.3Z"/>
+                        </svg>
+                        <span>Chat with me on WhatsApp<span class="visually-hidden"> (opens in a new tab)</span></span>
+                        <span class="btn__icon" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+                <div class="card contact-card" data-reveal>
+                    <h3 class="card-title card-title--lg">Be in Touch</h3>
+                    <p>Have a question or an opportunity? Send me a message.</p>
+
+                    {% if messages %}
+                    <div role="status" aria-live="polite">
+                        {% for message in messages %}
+                        <p class="form-notice {{ message.tags|default:'success' }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <form class="contact-form" method="post" action="#contact">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your name"
+                                autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" name="email" placeholder="Your email address"
+                                autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="subject" placeholder="What is this about?"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="5"
+                                placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span><span class="btn__icon" aria-hidden="true">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="#home" class="footer-logo">santosh<span>.dev</span></a>
+            <p>Python Full Stack Developer</p>
+            <nav aria-label="Footer">
+                <ul class="footer-links" role="list">
+                    <li><a href="https://github.com/RekhapalliUmaSatyaSantosh" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+                    <li><a href="https://www.linkedin.com/in/uma-satya-santosh-rekhapalli/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+            </nav>
+            <p class="footer-copy">© {% now "Y" %} Santosh Rekhapalli. Built with Django.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'portfolio/js/effects.js' %}" type="module"></script>
+</body>
+
+</html>
