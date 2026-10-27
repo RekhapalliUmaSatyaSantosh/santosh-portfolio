@@ -149,19 +149,18 @@ STORAGES = {
 }
 
 
-DEFAULT_FROM_EMAIL = os.environ.get("GMAIL_USER", "")
+
+
+# Email Configuration
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.environ.get("GMAIL_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
+EMAIL_TIMEOUT = 20
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_EMAIL = "santoshrekahapalli@gmail.com"
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        "OPTIONS": {
-            "host": "smtp.gmail.com",
-            "port": 587,
-            "use_tls": True,
-            "username": os.environ.get("GMAIL_USER", ""),
-            "password": os.environ.get("GMAIL_APP_PASSWORD", ""),
-            "timeout": 20,
-        },
-    },
-}
