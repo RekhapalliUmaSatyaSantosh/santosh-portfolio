@@ -1,0 +1,17 @@
+portfolio/templates/portfolio/home.html
+  h_b91063dbd228f5 252-287,471-472,474-477
+portfolio/views.py
+  h_b91063dbd228f5 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "autter_version": "2.2.0",
+  "base_commit_sha": "0b4497a1dfe54ebf7587b32f5445dfa5f866ac6e",
+  "branch": "main",
+  "prompts": {},
+  "humans": {
+    "h_b91063dbd228f5": {
+      "author": "Rekhapalli Uma Satya Santosh <santoshrekahapalli@gmail.com>"
+    }
+  }
+}
