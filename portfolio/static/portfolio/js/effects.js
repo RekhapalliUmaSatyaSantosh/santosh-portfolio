@@ -1,167 +1,63 @@
-document.documentElement.classList.replace("no-js", "js");
-document.addEventListener("DOMContentLoaded", () => {
-    const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const header = document.querySelector(".site-header");
-    const progressBar = document.querySelector("#reading-progress-bar");
-    const toggle = document.querySelector(".nav-toggle");
-    const navPanel = document.querySelector(".nav-panel");
-    const navLinks = document.querySelectorAll(
-        '.nav-menu a[href^="#"]'
-    );
-    function closeMenu() {
-        if (!toggle || !navPanel) return;
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open navigation");
-        navPanel.classList.remove("is-open");
-    }
-    function openMenu() {
-        if (!toggle || !navPanel) return;
-        toggle.setAttribute("aria-expanded", "true");
-        toggle.setAttribute("aria-label", "Close navigation");
-        navPanel.classList.add("is-open");
-    }
-    if (toggle && navPanel) {
-        toggle.addEventListener("click", () => {
-            const isOpen =
-                toggle.getAttribute("aria-expanded") === "true";
+/* Effects for the current index.html (loaded as type="module"). Vanilla JS. */
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canHover = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-            isOpen ? closeMenu() : openMenu();
-        });
-        navLinks.forEach(link => {
-            link.addEventListener("click", closeMenu);
-        });
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape") {
-                closeMenu();
-                toggle.focus();
-            }
-        });
-        document.addEventListener("click", event => {
-            const clickedInside =
-                navPanel.contains(event.target) ||
-                toggle.contains(event.target);
-            if (!clickedInside) {
-                closeMenu();
-            }
-        });
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 680) {
-                closeMenu();
-            }
-        });
-    }
-    let scrollScheduled = false;
-    function updateScrollUI() {
-        const scrollTop =
-            window.scrollY ||
-            document.documentElement.scrollTop;
-        const scrollHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-        const percentage =
-            scrollHeight > 0
-                ? (scrollTop / scrollHeight) * 100
-                : 0;
-        if (progressBar) {
-            progressBar.style.width = `${percentage}%`;
-        }
-        if (header) {
-            header.classList.toggle(
-                "is-scrolled",
-                scrollTop > 20
-            );
-        }
-        scrollScheduled = false;
-    }
-    window.addEventListener("scroll", () => {
-        if (!scrollScheduled) {
-            window.requestAnimationFrame(updateScrollUI);
-            scrollScheduled = true;
-        }
-    }, { passive: true });
-    updateScrollUI();
-    const revealElements =
-        document.querySelectorAll("[data-reveal]");
-    if ("IntersectionObserver" in window && !reduceMotion) {
-        const revealObserver = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -35px 0px"
-            }
-        );
-        revealElements.forEach(element => {
-            revealObserver.observe(element);
-        });
-    } else {
-        revealElements.forEach(element => {
-            element.classList.add("is-visible");
-        });
-    }
-    const sections = document.querySelectorAll(
-        "main section[id]"
-    );
-    if ("IntersectionObserver" in window) {
-        const sectionObserver = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    const currentId = entry.target.id;
-                    navLinks.forEach(link => {
-                        const active =
-                            link.getAttribute("href") ===
-                            `#${currentId}`;
-                        link.classList.toggle("active", active);
-                        if (active) {
-                            link.setAttribute(
-                                "aria-current",
-                                "location"
-                            );
-                        } else {
-                            link.removeAttribute("aria-current");
-                        }
-                    });
-                });
-            },
-            {
-                rootMargin: "-30% 0px -60% 0px",
-                threshold: 0
-            }
-        );
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
-    }
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", event => {
-            const targetId = link.getAttribute("href");
-            if (!targetId || targetId === "#") return;
-            const target = document.querySelector(targetId);
-            if (!target) return;
-            event.preventDefault();
-            target.scrollIntoView({
-                behavior: reduceMotion ? "auto" : "smooth",
-                block: "start"
-            });
-            if (targetId === "#main") {
-                target.focus({ preventScroll: true });
-            }
-        });
-    });
-    const portrait = document.querySelector(".portrait-frame img");
-    if (portrait) {
-        portrait.addEventListener("error", () => {
-            portrait.style.display = "none";
-            portrait.parentElement.style.background = "#FFD6A5";
-        }, { once: true });
-    }
+/* Mobile menu */
+const toggle = $(".nav-toggle"), links = $$(".nav-menu a");
+const setMenu = open => toggle && toggle.setAttribute("aria-expanded", String(open));
+toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
+links.forEach(a => a.addEventListener("click", () => setMenu(false)));
+document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+document.addEventListener("click", e => {
+  if (toggle?.getAttribute("aria-expanded") === "true" && !e.target.closest(".site-header")) setMenu(false);
 });
+
+/* Scroll progress + header state */
+const bar = $(".scroll-progress"), header = $(".site-header");
+let ticking = false;
+const onScroll = () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  if (bar) bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  header?.classList.toggle("is-scrolled", scrollY > 30);
+  ticking = false;
+};
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+/* Scroll reveal (staggered per row); attribute removed after so hover transitions stay snappy */
+const items = $$("[data-reveal]");
+if ("IntersectionObserver" in window && !reduced) {
+  const io = new IntersectionObserver(entries => {
+    entries.filter(e => e.isIntersecting).forEach((e, i) => {
+      e.target.style.setProperty("--reveal-index", i);
+      e.target.classList.add("is-visible");
+      io.unobserve(e.target);
+      setTimeout(() => e.target.removeAttribute("data-reveal"), 1200);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  items.forEach(el => io.observe(el));
+} else items.forEach(el => el.classList.add("is-visible"));
+
+/* Active nav link */
+if ("IntersectionObserver" in window) {
+  const so = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(a => {
+      const on = a.getAttribute("href") === `#${e.target.id}`;
+      on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current");
+    });
+  }), { rootMargin: "-35% 0px -55% 0px" });
+  $$("main section[id]").forEach(s => so.observe(s));
+}
+
+/* Cursor glow (desktop only) */
+const glow = $(".cursor-glow");
+if (glow && canHover && !reduced) {
+  addEventListener("pointermove", e => {
+    glow.classList.add("is-active");
+    glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+  }, { passive: true });
+  document.addEventListener("pointerleave", () => glow.classList.remove("is-active"));
+}
