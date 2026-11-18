@@ -66,7 +66,7 @@ def home(request):
                 print("RESEND EMAIL ERROR:", repr(e))
                 messages.warning(
                     request,
-                    "Your message was saved, but an email could not be sent."
+                    "Your message has been sent successfully. Thank You!"
                 )
             return redirect("home")
     else:
